@@ -80,6 +80,7 @@ task cucumber() {
             args = ['--plugin', 'pretty', '--glue', 'stepDef', 'src/test/java']
         }
     }
+    echo "finish cucumber task."
 }
 
 task fatJar(type: Jar) {
@@ -92,6 +93,7 @@ task fatJar(type: Jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
     with jar
+    echo "finish fatJar task."
 }
 
 test {
