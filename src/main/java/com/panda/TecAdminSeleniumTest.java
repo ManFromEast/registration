@@ -20,6 +20,7 @@ public class TecAdminSeleniumTest {
 
 		Thread.sleep(1000);
 
+		System.out.println("this is page source : " + driver.getPageSource());
 		if (driver.getPageSource().contains("I'm Feeling Lucky")) {
 			System.out.println("Pass");
 		} else {
