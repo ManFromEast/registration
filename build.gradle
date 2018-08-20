@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.2.RELEASE'
+        springBootVersion = '2.0.4.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -43,31 +43,32 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-data-redis')
     compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.cloud:spring-cloud-config-server')
     compile('org.springframework.cloud:spring-cloud-starter-config')
 	compile('org.springframework.security:spring-security-config:5.0.6.RELEASE')
 	compile('org.springframework.security:spring-security-web:5.0.6.RELEASE')
-	
 	compile('io.jsonwebtoken:jjwt:0.9.0')
-    
-    
+
     compile'org.seleniumhq.selenium:selenium-chrome-driver:3.12.0'
     compile'org.seleniumhq.selenium:selenium-java:3.12.0'
     compile'org.seleniumhq.selenium:selenium-server:3.12.0'
-    compile('io.cucumber:pro-plugin:2.1.1')
-    
+    //compile('io.cucumber:pro-plugin:2.1.1')
+
     runtime('org.springframework.boot:spring-boot-devtools')
     runtime('mysql:mysql-connector-java')
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('io.cucumber:cucumber-junit:3.0.2')
-    testCompile('io.cucumber:cucumber-java:3.0.2')
-    testCompile('io.cucumber:cucumber-core:3.0.2')
-    testCompile('io.cucumber:cucumber-spring:3.0.2')
-    testCompile('io.cucumber:cucumber-jvm:3.0.2')
+    testCompile('info.cukes:cucumber-junit:1.2.5')
+    testCompile('info.cukes:cucumber-java:1.2.5')
+    testCompile('info.cukes:cucumber-core:1.2.5')
+    testCompile('info.cukes:cucumber-spring:1.2.5')
+    testCompile('info.cukes:cucumber-jvm:1.2.5')
+    compile('org.seleniumhq.selenium:selenium-java:3.14.0')
+	compile('com.vimalselvam:cucumber-extentsreport:3.1.0')
     testCompile 'junit:junit:4.12'
-    
 }
 
 dependencyManagement {
@@ -76,17 +77,7 @@ dependencyManagement {
     }
 }
 
-task cucumber() {
-    dependsOn assemble, compileTestJava
-    doLast {
-        javaexec {
-            main = "com.panda.TecAdminSeleniumTest"
-            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty', '--glue', 'stepDef', 'src/test/java']
-        }
-    }
-    println 'finish cucumber task.'
-}
+
 
 task fatJar(type: Jar) {
     manifest {

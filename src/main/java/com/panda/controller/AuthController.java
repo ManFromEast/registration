@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.panda.constant.RoleName;
 import com.panda.entity.Role;
 import com.panda.entity.User;
-import com.panda.enums.RoleName;
 import com.panda.exception.AppException;
 import com.panda.payload.ApiResponse;
 import com.panda.payload.JwtAuthenticationResponse;

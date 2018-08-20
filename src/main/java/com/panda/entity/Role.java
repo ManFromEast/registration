@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
 
-import com.panda.enums.RoleName;
+import com.panda.constant.RoleName;
 
 @Entity
 @Table(name = "roles")

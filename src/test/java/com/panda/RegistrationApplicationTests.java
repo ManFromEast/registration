@@ -1,17 +1,18 @@
 package com.panda;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
-
-@RunWith(Cucumber.class)
-@CucumberOptions(plugin = { "pretty", "io.cucumber.pro.JsonReporter:all" })
+@SpringBootApplication
+@EnableJpaAuditing
+@EntityScan(basePackageClasses = {
+        RegistrationApplicationTests.class,
+})
 public class RegistrationApplicationTests {
 
-    @Test
-    public void contextLoads() {
+    public static void main(String[] args) {
+        SpringApplication.run(RegistrationApplicationTests.class, args);
     }
-
 }
